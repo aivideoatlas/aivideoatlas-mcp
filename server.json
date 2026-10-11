@@ -1,0 +1,11 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "com.aivideoatlas/atlas",
+  "title": "AI Video Atlas",
+  "description": "Plan AI video shots: model picks, sourced prompts, prompting guides and real $/s costs.",
+  "version": "1.0.0",
+  "websiteUrl": "https://aivideoatlas.com/agents/",
+  "remotes": [
+    { "type": "streamable-http", "url": "https://mcp.aivideoatlas.com/mcp" }
+  ]
+}

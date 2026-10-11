@@ -1,0 +1,30 @@
+# Cloudflare Workers config for the AI Video Atlas MCP server.
+# Placeholders: set your own values before `wrangler deploy`. No account IDs or secrets are stored in this repo.
+#   account_id   -> your Cloudflare account ID (or set CLOUDFLARE_ACCOUNT_ID in the environment instead)
+#   routes       -> your own custom domain; the public instance runs at mcp.aivideoatlas.com
+name = "ai-video-atlas-mcp"
+main = "dist/worker.mjs"
+compatibility_date = "2026-10-01"
+# account_id = "<YOUR_CLOUDFLARE_ACCOUNT_ID>"
+workers_dev = true
+
+# routes = [{ pattern = "<mcp.your-domain.example>", custom_domain = true }]
+
+# Per-client rate limiter (60 requests/minute per IPv4 address or IPv6 /48). IPs are used in memory only and never stored.
+[[durable_objects.bindings]]
+name = "LIMITER"
+class_name = "RateLimiter"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["RateLimiter"]
+
+[observability]
+enabled = true
+head_sampling_rate = 1
+# Invocation logs (which include request metadata) should stay OFF; the code only logs anonymous `atlas_query` lines.
+[observability.logs]
+invocation_logs = false
+
+[build]
+command = "node scripts/build.mjs"
