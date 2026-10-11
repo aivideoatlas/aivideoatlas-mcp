@@ -66,7 +66,9 @@ The public instance is free and keyless. It allows about **60 requests a minute 
 - No accounts, keys or cookies.
 - **IP addresses are never stored or logged.** They're used only in memory to apply the rate limit.
 - Workers invocation logs are off. The only log line is an anonymous `atlas_query` event: tool name, query text (lowercased and truncated), argument names, result count, latency and client name, if the client sends one. These are used to see which tools and topics are useful.
+- Daily aggregate counts (sessions, tool calls by tool, MCP vs REST, client names) are kept in a Durable Object and published at https://mcp.aivideoatlas.com/stats/daily. Counts only: no IPs, no query text.
 - Don't put personal information in queries.
+- Full policy: https://aivideoatlas.com/privacy/
 
 ## Run your own copy
 

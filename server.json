@@ -5,7 +5,14 @@
   "description": "Plan AI video shots: model picks, sourced prompts, prompting guides and real $/s costs.",
   "version": "1.0.0",
   "websiteUrl": "https://aivideoatlas.com/agents/",
+  "repository": {
+    "url": "https://github.com/aivideoatlas/aivideoatlas-mcp",
+    "source": "github"
+  },
   "remotes": [
-    { "type": "streamable-http", "url": "https://mcp.aivideoatlas.com/mcp" }
+    {
+      "type": "streamable-http",
+      "url": "https://mcp.aivideoatlas.com/mcp"
+    }
   ]
 }
